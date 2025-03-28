@@ -35,7 +35,7 @@ export const About = () => {
 
         <AnimatedTitle containerClass="mt-5 !text-black text-center">
           {
-            "Welcome to Spectr<b>a</b> Where <b>inova</b>tion <br /> meets Creativity "
+            "Welcome to Spectr<b>a</b> Where <b>innova</b>tion <br /> meets Creativity "
           }
         </AnimatedTitle>
 
