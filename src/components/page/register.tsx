@@ -1,6 +1,7 @@
 import React, { useState, FormEvent } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { initializeApp } from "firebase/app";
+
 
 // Firebase configuration (move to a separate file in production)
 const firebaseConfig = {
