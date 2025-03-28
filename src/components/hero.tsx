@@ -153,13 +153,13 @@ export const Hero = () => {
               Unleash the Play Economy
             </p>
 
-            <Button
+           <a href="register"><Button
               id="watch-trailer"
               leftIcon={TiLocationArrow}
               containerClass="bg-yellow-300 flex-center gap-1"
             >
               Register
-            </Button>
+            </Button></a> 
           </div>
         </div>
       </div>

@@ -12,6 +12,8 @@ import Event from "./components/page/event";
 import About from "./components/page/about";
 import Contact from "./components/page/contact";
 import Team from "./components/page/team";
+import Register from "./components/page/register";
+
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/team" element={<Team />} />
+          <Route path="/register" element={<Register />} />
+
         </Routes>
 
         <Footer />
