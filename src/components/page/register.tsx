@@ -120,10 +120,9 @@ const Register: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-5xl font-extrabold text-cyan-400 tracking-wider animate-glow">
-            Spectra 3025: Quantum Registry
+            Spectra 2025: Register here
           </h2>
           <p className="text-gray-400 mt-4 text-xl font-mono animate-fade-in-up">
-            Initiate your interstellar team protocol
           </p>
         </div>
 
@@ -131,7 +130,7 @@ const Register: React.FC = () => {
           {/* Payment Method Selection */}
           <div className="space-y-4">
             <label htmlFor="paymentMethod" className="block text-sm font-mono text-cyan-300">
-              Transmission Mode <span className="text-red-500">*</span>
+              Payment Mode <span className="text-red-500">*</span>
             </label>
             <select
               id="paymentMethod"
