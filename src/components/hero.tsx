@@ -149,7 +149,7 @@ export const Hero = () => {
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Somnath !!!! <br />
+              Somnath  <br />
               Unleash the Play Economy
             </p>
 
