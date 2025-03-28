@@ -2,7 +2,6 @@ import React, { useState, FormEvent } from 'react';
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 
-
 // Firebase configuration (move to a separate file in production)
 const firebaseConfig = {
   apiKey: "AIzaSyCYfOtBqd4kKuQgmotYuRiHNtFQSnx2iz0",
@@ -68,7 +67,6 @@ const Register: React.FC = () => {
         'email', 'phone1', 'phone2'
       ];
 
-      // Only add transactionId to required fields if payment method is 'online'
       if (formData.paymentMethod === 'online') {
         requiredFields.push('transactionId');
       }
@@ -83,14 +81,10 @@ const Register: React.FC = () => {
         throw new Error('Invalid email format');
       }
 
-      console.log('Submitting data:', formData);
-      
-      const docRef = await addDoc(collection(db, "registrations"), {
+      await addDoc(collection(db, "registrations"), {
         ...formData,
         timestamp: new Date().toISOString()
       });
-      
-      console.log('Document written with ID: ', docRef.id);
       
       setFormData({
         teamName: '',
@@ -107,7 +101,6 @@ const Register: React.FC = () => {
       
       setSubmitStatus('success');
     } catch (error: any) {
-      console.error('Detailed Registration Error:', error);
       setSubmitStatus('error');
       setErrorMessage(error.message || 'An unexpected error occurred');
     } finally {
@@ -116,193 +109,138 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen  flex items-center justify-center p-4 sm:p-6 lg:p-8 	">
-      <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 sm:p-8 lg:p-10 mt-20" >
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 flex items-center justify-center p-4 sm:p-6 lg:p-8 relative overflow-hidden">
+      {/* Sci-fi background effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-64 h-64 bg-cyan-500 opacity-10 rounded-full filter blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 opacity-10 rounded-full filter blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      <div className="w-full max-w-4xl bg-gray-900/90 backdrop-blur-md border border-cyan-500/30 shadow-[0_0_15px_rgba(0,255,255,0.3)] rounded-3xl p-8 sm:p-10 lg:p-12 mt-20 transform transition-all hover:shadow-[0_0_25px_rgba(0,255,255,0.5)] animate-fade-in z-10">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-blue-600">
-            Team Registration
+        <div className="text-center mb-12">
+          <h2 className="text-5xl font-extrabold text-cyan-400 tracking-wider animate-glow">
+            Spectra 3025: Quantum Registry
           </h2>
-          <p className="text-gray-600 mt-2">
-            Fill out the form to register your team
+          <p className="text-gray-400 mt-4 text-xl font-mono animate-fade-in-up">
+            Initiate your interstellar team protocol
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-10">
           {/* Payment Method Selection */}
-          <div className="space-y-2">
-            <label htmlFor="paymentMethod" className="block text-sm font-medium text-gray-700">
-              Payment Method <span className="text-red-500">*</span>
+          <div className="space-y-4">
+            <label htmlFor="paymentMethod" className="block text-sm font-mono text-cyan-300">
+              Transmission Mode <span className="text-red-500">*</span>
             </label>
             <select
               id="paymentMethod"
               value={formData.paymentMethod}
               onChange={handleChange}
-              className="w-full p-2 border-2 border-blue-500 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+              className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)]"
               required
             >
-              <option value="offline">Offline</option>
-              <option value="online">Online</option>
+              <option value="offline">Offline Mode</option>
+              <option value="online">Online Mode</option>
             </select>
           </div>
 
           {/* QR Code for Online Payment */}
           {formData.paymentMethod === 'online' && (
-            <div className="bg-blue-50 p-4 rounded-md text-center space-y-3">
-              <p className="text-gray-700 font-medium">
-                Scan the QR code below to make the payment:
+            <div className="bg-gray-800/80 p-6 rounded-2xl text-center space-y-5 border border-purple-500/30 shadow-[0_0_15px_rgba(147,51,234,0.3)] animate-slide-up">
+              <p className="text-purple-300 font-mono text-lg">
+                Quantum Payment Interface
               </p>
-              <img
-                src="https://via.placeholder.com/150x150.png?text=Payment+QR+Code"
-                alt="Payment QR Code"
-                className="mx-auto w-40 h-40 rounded-md shadow-sm"
-              />
-              <p className="text-gray-600 text-sm">
-                After completing the payment, enter the Transaction ID below.
+              <div className="bg-gray-900 p-4 rounded-xl shadow-inner transform hover:scale-105 transition-all duration-300 border border-cyan-500/20">
+                <img
+                  src="https://via.placeholder.com/150x150.png?text=Quantum+QR"
+                  alt="Payment QR Code"
+                  className="w-52 h-52 rounded-lg shadow-[0_0_10px_rgba(0,255,255,0.5)]"
+                />
+              </div>
+              <p className="text-gray-400 text-sm font-mono animate-fade-in">
+                Input Transaction Hash below
               </p>
             </div>
           )}
 
-          {/* Form Fields - 3 per row */}
-          <div className="space-y-4">
-            {/* Row 1: teamName, name1, name2 */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="space-y-1">
-                <label htmlFor="teamName" className="block text-sm font-medium text-gray-700">
-                  Team Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="teamName"
-                  type="text"
-                  value={formData.teamName}
-                  onChange={handleChange}
-                  placeholder="Enter team name"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
-                  required
-                />
-              </div>
-              <div className="space-y-1">
-                <label htmlFor="name1" className="block text-sm font-medium text-gray-700">
-                  Member 1 Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="name1"
-                  type="text"
-                  value={formData.name1}
-                  onChange={handleChange}
-                  placeholder="Enter member 1 name"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
-                  required
-                />
-              </div>
-              <div className="space-y-1">
-                <label htmlFor="name2" className="block text-sm font-medium text-gray-700">
-                  Member 2 Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="name2"
-                  type="text"
-                  value={formData.name2}
-                  onChange={handleChange}
-                  placeholder="Enter member 2 name"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Row 2: college, department, email */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="space-y-1">
-                <label htmlFor="college" className="block text-sm font-medium text-gray-700">
-                  College
-                </label>
-                <input
-                  id="college"
-                  type="text"
-                  value={formData.college}
-                  onChange={handleChange}
-                  placeholder="Enter college name (optional)"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
-                />
-              </div>
-              <div className="space-y-1">
-                <label htmlFor="department" className="block text-sm font-medium text-gray-700">
-                  Department <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="department"
-                  type="text"
-                  value={formData.department}
-                  onChange={handleChange}
-                  placeholder="Enter department"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
-                  required
-                />
-              </div>
-              <div className="space-y-1">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter email"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Row 3: phone1, phone2, and transactionId (only for online) */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="space-y-1">
-                <label htmlFor="phone1" className="block text-sm font-medium text-gray-700">
-                  Member 1 Phone <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="phone1"
-                  type="tel"
-                  value={formData.phone1}
-                  onChange={handleChange}
-                  placeholder="Enter member 1 phone"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
-                  required
-                />
-              </div>
-              <div className="space-y-1">
-                <label htmlFor="phone2" className="block text-sm font-medium text-gray-700">
-                  Member 2 Phone <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="phone2"
-                  type="tel"
-                  value={formData.phone2}
-                  onChange={handleChange}
-                  placeholder="Enter member 2 phone"
-                  className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
-                  required
-                />
-              </div>
-              {/* Conditionally render transactionId input only for online payment */}
-              {formData.paymentMethod === 'online' && (
-                <div className="space-y-1">
-                  <label htmlFor="transactionId" className="block text-sm font-medium text-gray-700">
-                    Transaction ID <span className="text-red-500">*</span>
+          {/* Form Fields */}
+          <div className="space-y-8">
+            {/* Row 1 */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {[
+                { id: 'teamName', label: 'Team Name', placeholder: 'Enter your Team Name', required: true },
+                { id: 'name1', label: 'Name 1', placeholder: 'Enter 1st Participant Name', required: true },
+                { id: 'name2', label: 'Name 2', placeholder: 'Enter 2nd Participant Name', required: true }
+              ].map(field => (
+                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${field.id === 'teamName' ? '0s' : field.id === 'name1' ? '0.1s' : '0.2s'}` }}>
+                  <label htmlFor={field.id} className="block text-sm font-mono text-cyan-300">
+                    {field.label} {field.required && <span className="text-red-500">*</span>}
                   </label>
                   <input
-                    id="transactionId"
+                    id={field.id}
                     type="text"
-                    value={formData.transactionId}
+                    value={formData[field.id as keyof TeamRegistrationData]}
                     onChange={handleChange}
-                    placeholder="Enter transaction ID (required)"
-                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 placeholder-gray-400"
-                    required
+                    placeholder={field.placeholder}
+                    className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
+                    required={field.required}
                   />
                 </div>
-              )}
+              ))}
+            </div>
+
+            {/* Row 2 */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {[
+                { id: 'college', label: 'College Name', placeholder: 'Enter College Name', required: false },
+                { id: 'department', label: 'Department', placeholder: 'Enter Department', required: true },
+                { id: 'email', label: 'Email', placeholder: 'Enter your Email', type: 'email', required: true }
+              ].map(field => (
+                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${field.id === 'college' ? '0s' : field.id === 'department' ? '0.1s' : '0.2s'}` }}>
+                  <label htmlFor={field.id} className="block text-sm font-mono text-cyan-300">
+                    {field.label} {field.required && <span className="text-red-500">*</span>}
+                  </label>
+                  <input
+                    id={field.id}
+                    type={field.type || 'text'}
+                    value={formData[field.id as keyof TeamRegistrationData]}
+                    onChange={handleChange}
+                    placeholder={field.placeholder}
+                    className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
+                    required={field.required}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Row 3 */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {[
+                { id: 'phone1', label: 'Phone No', placeholder: 'Enter Phone No 1', type: 'tel', required: true },
+                { id: 'phone2', label: 'Phone No', placeholder: 'Enter Phone No 2', type: 'tel', required: true },
+                ...(formData.paymentMethod === 'online' ? [{
+                  id: 'transactionId',
+                  label: 'Transaction Hash',
+                  placeholder: 'Enter transaction hash',
+                  required: true
+                }] : [])
+              ].map(field => (
+                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${field.id === 'phone1' ? '0s' : field.id === 'phone2' ? '0.1s' : '0.2s'}` }}>
+                  <label htmlFor={field.id} className="block text-sm font-mono text-cyan-300">
+                    {field.label} {field.required && <span className="text-red-500">*</span>}
+                  </label>
+                  <input
+                    id={field.id}
+                    type={field.type || 'text'}
+                    value={formData[field.id as keyof TeamRegistrationData]}
+                    onChange={handleChange}
+                    placeholder={field.placeholder}
+                    className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
+                    required={field.required}
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
@@ -310,40 +248,40 @@ const Register: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full py-3 rounded-md text-white font-semibold transition-all duration-300 ${
+            className={`w-full py-4 rounded-xl text-white font-mono text-lg uppercase tracking-wider transition-all duration-500 shadow-[0_0_15px_rgba(0,255,255,0.5)] ${
               isSubmitting 
-                ? 'bg-gray-400 cursor-not-allowed' 
-                : 'bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'
+                ? 'bg-gray-700 cursor-not-allowed' 
+                : 'bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-700 hover:to-purple-700 focus:ring-4 focus:ring-cyan-400 transform hover:scale-105 animate-glow'
             }`}
           >
             {isSubmitting ? (
               <span className="flex items-center justify-center">
-                <svg className="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg className="animate-spin h-6 w-6 mr-3 text-cyan-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Submitting...
+                Transmitting...
               </span>
             ) : (
-              'Submit Registration'
+              'Engage Registry'
             )}
           </button>
 
-          {/* Success/Error Messages */}
+          {/* Status Messages */}
           {submitStatus === 'success' && (
-            <div className="mt-4 p-4 bg-green-100 text-green-700 rounded-md flex items-center">
-              <svg className="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div className="mt-8 p-6 bg-gray-800/80 text-cyan-300 rounded-2xl flex items-center shadow-[0_0_15px_rgba(0,255,255,0.3)] animate-bounce-in border border-cyan-500/30">
+              <svg className="h-8 w-8 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
               </svg>
-              Registration successful! Thank you for registering.
+              <span className="font-mono">Registry Confirmed: Access Granted!</span>
             </div>
           )}
           {submitStatus === 'error' && (
-            <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-md flex items-center">
-              <svg className="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <div className="mt-8 p-6 bg-gray-800/80 text-red-400 rounded-2xl flex items-center shadow-[0_0_15px_rgba(255,0,0,0.3)] animate-bounce-in border border-red-500/30">
+              <svg className="h-8 w-8 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
               </svg>
-              Registration failed: {errorMessage || 'Please check your information and try again.'}
+              <span className="font-mono">Error: {errorMessage}</span>
             </div>
           )}
         </form>
