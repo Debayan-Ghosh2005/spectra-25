@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { FaGithub } from "react-icons/fa";
+
 import { TiLocationArrow } from "react-icons/ti";
 import { FaChevronDown, FaTimes } from "react-icons/fa";
-import { LINKS, NAV_ITEMS } from "@/constants";
+import { NAV_ITEMS } from "@/constants";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 
@@ -100,8 +100,6 @@ export const Navbar = () => {
                   />
                 ))}
             </button>
-
-            
 
             {/* Mobile Menu Button */}
             <button
