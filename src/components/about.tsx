@@ -49,7 +49,7 @@ export const About = () => {
       <div className="h-dvh w-screen" id="clip">
         <div className="mask-clip-path about-image">
           <video
-            src="/videos/vid-about.mp4"
+            src="https://res.cloudinary.com/dl5pkrids/video/upload/v1743331850/vid-about_fc37gy.mp4"
             autoPlay
             loop
             muted

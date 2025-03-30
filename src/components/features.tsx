@@ -112,13 +112,13 @@ export const Features = (): JSX.Element => {
         >
           <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard
-              src="/videos/feature-2.mp4"
+              src="https://res.cloudinary.com/dl5pkrids/video/upload/v1743330988/bgli_fzpjq3.mp4"
               title={
                 <>
-                  zig<b>m</b>a
+                  Tribute to Ghibli Studio Animation
                 </>
               }
-              description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
+              description="From Team SPECTRA"
             />
           </BentoTilt>
 
@@ -148,15 +148,15 @@ export const Features = (): JSX.Element => {
             <div
               className="w-full h-full"
               style={{
-                backgroundImage: "url('/img/wwy.jpg')",
+                backgroundImage: "url('/img/db.jpg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
             >
               <BentoCard
-                title={<span className="text-black">Round 2</span>} // Line 160
+                title={<span className="text-white">Round 2</span>} // Line 160
                 description={
-                  <span className="text-black">
+                  <span className="text-white">
                     An anime and gaming-inspired NFT collection - the IP primed
                     for expansion.
                   </span>
