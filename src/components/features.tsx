@@ -94,7 +94,7 @@ export const Features = (): JSX.Element => {
           </p>
         </div>
 
-        <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
+        {/* <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
           <BentoCard
             src="/videos/feature-1.mp4"
             title={
@@ -104,7 +104,7 @@ export const Features = (): JSX.Element => {
             }
             description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
           />
-        </BentoTilt>
+        </BentoTilt> */}
 
         <div
           id="nexus"
@@ -169,10 +169,10 @@ export const Features = (): JSX.Element => {
           <BentoTilt className="bento-tilt_2">
             <div
               className="flex size-full flex-col justify-between bg-cover bg-center p-5"
-              style={{ backgroundImage: "url('/img/gift2.png')" }}
+              style={{ backgroundImage: "url('/img/colg.jpg')" }}
             >
               <h1 className="bento-title special-font max-w-64 text-[#FFF000]">
-                W<b>i</b>n Amazin<b>g</b> Prizes
+                {/* W<b>i</b>n Amazin<b>g</b> Prizes */}
               </h1>
 
               <TiLocationArrow className="m-5 scale-[5] self-end text-[#FFF000]" />
