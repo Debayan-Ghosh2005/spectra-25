@@ -149,17 +149,19 @@ export const Hero = () => {
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Somnath  <br />
+              Somnath Paul <br />
               Unleash the Play Economy
             </p>
 
-           <a href="register"><Button
-              id="watch-trailer"
-              leftIcon={TiLocationArrow}
-              containerClass="bg-yellow-300 flex-center gap-1"
-            >
-              Register
-            </Button></a> 
+            <a href="register">
+              <Button
+                id="watch-trailer"
+                leftIcon={TiLocationArrow}
+                containerClass="bg-yellow-300 flex-center gap-1"
+              >
+                Register
+              </Button>
+            </a>
           </div>
         </div>
       </div>
