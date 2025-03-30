@@ -128,7 +128,7 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="mt-4 grid grid-cols-2 gap-4">
           <img
-            src="https://assets.aceternity.com/templates/startup-1.webp"
+            src="/img/prize.jpg"
             alt="startup template"
             className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
           />
@@ -221,7 +221,7 @@ const Schedule = () => {
 
   return (
     <div className="relative min-h-screen w-screen overflow-x-hidden bg-[#001D35] text-white">
-      <div className="mt-10 w-full font-sans md:px-10 bg-[#001D35]">
+      <div className="mt-10 w-full bg-[#001D35] font-sans md:px-10">
         {/* Animated Header Section */}
         <motion.div
           className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10"

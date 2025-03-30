@@ -13,7 +13,7 @@ import About from "./components/page/about";
 import Contact from "./components/page/contact";
 import Team from "./components/page/team";
 import Register from "./components/page/register";
-
+import Gallery from "./components/page/Gallery";
 
 const App = () => {
   return (
@@ -25,10 +25,10 @@ const App = () => {
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/event" element={<Event />} />
           <Route path="/about" element={<About />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/team" element={<Team />} />
           <Route path="/register" element={<Register />} />
-
         </Routes>
 
         <Footer />

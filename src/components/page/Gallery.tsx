@@ -16,20 +16,26 @@ const categories = [
   },
   {
     title: "Round 2 Highlights",
-    main: "/images/spectra2.jpg",
+    main: "/img/round2.jpg",
     related: [
-      "/images/spectra2-1.jpg",
-      "/images/spectra2-2.jpg",
-      "/images/spectra2-3.jpg",
+      "/img/round2.jpg",
+      "/img/round2.jpg",
+      "/img/round2.jpg",
+      "/img/round2.jpg",
+      "/img/round2.jpg",
+      "/img/round2.jpg",
     ],
   },
   {
     title: "Round 3 Highlights",
-    main: "/images/spectra3.jpg",
+    main: "/img/round2.jpg",
     related: [
-      "/images/spectra3-1.jpg",
-      "/images/spectra3-2.jpg",
-      "/images/spectra3-3.jpg",
+      "/img/round2.jpg",
+      "/img/round2.jpg",
+      "/img/round2.jpg",
+      "/img/round2.jpg",
+      "/img/round2.jpg",
+      "/img/round2.jpg",
     ],
   },
   {
@@ -41,18 +47,9 @@ const categories = [
       "/images/spectra4-3.jpg",
     ],
   },
-  {
-    title: "Spectra Event 5",
-    main: "/images/spectra5.jpg",
-    related: [
-      "/images/spectra5-1.jpg",
-      "/images/spectra5-2.jpg",
-      "/images/spectra5-3.jpg",
-    ],
-  },
 ];
 
-const About = () => {
+const Gallery = () => {
   const [index, setIndex] = useState(0);
 
   const nextImage = () => {
@@ -113,4 +110,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Gallery;
