@@ -221,7 +221,7 @@ const Schedule = () => {
 
   return (
     <div className="relative min-h-screen w-screen overflow-x-hidden bg-[#001D35] text-white">
-      <div className="mt-10 w-full font-sans md:px-10 dark:bg-neutral-950">
+      <div className="mt-10 w-full font-sans md:px-10 bg-[#001D35]">
         {/* Animated Header Section */}
         <motion.div
           className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10"
