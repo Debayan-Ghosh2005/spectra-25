@@ -309,8 +309,12 @@ const Schedule = () => {
               variants={itemVariants}
             >
               <div className="sticky top-40 z-40 flex max-w-xs flex-col items-center self-start md:w-full md:flex-row lg:max-w-sm">
-                <div className="absolute left-3 flex h-10 w-10 items-center justify-center rounded-full bg-white md:left-3 dark:bg-black">
-                  <div className="h-4 w-4 rounded-full border border-neutral-300 bg-neutral-200 p-2 dark:border-neutral-700 dark:bg-neutral-800" />
+                <div className="absolute left-3 flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white md:left-3 dark:bg-black">
+                  <img
+                    src="/img/logo.png"
+                    alt="Icon"
+                    className="h-full w-full rounded-full object-cover"
+                  />
                 </div>
                 <h3 className="hidden text-xl font-bold text-white md:block md:pl-20 md:text-5xl dark:text-white">
                   {item.title}
