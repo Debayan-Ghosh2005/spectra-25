@@ -232,7 +232,7 @@ const Team = () => {
             background: #001D35;
           }
           .card-glass {
-            background: rgba(30, 0, 96, 0.15);
+            background:rgb(2, 37, 67);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
           }
