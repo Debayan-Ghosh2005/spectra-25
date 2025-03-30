@@ -8,11 +8,6 @@ interface ImageClipBoxProps {
   clipClass?: string;
 }
 
-const ImageClipBox = ({ src, alt, clipClass }: ImageClipBoxProps) => (
-  <div className={clipClass}>
-    <img src={src} alt={alt} />
-  </div>
-);
 
 export const Contact = (): JSX.Element => {
   return (
