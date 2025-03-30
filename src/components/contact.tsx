@@ -1,12 +1,7 @@
 import { JSX } from "react";
 import { Button } from "./button";
 
-// Define the props for ImageClipBox
-interface ImageClipBoxProps {
-  src: string;
-  alt: string;
-  clipClass?: string;
-}
+
 
 
 export const Contact = (): JSX.Element => {
