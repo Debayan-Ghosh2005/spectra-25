@@ -3,8 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 import { FaChevronDown, FaTimes } from "react-icons/fa";
 import { NAV_ITEMS } from "@/constants";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 import { Button } from "./button";
+import { FaMusic } from "react-icons/fa";
 
 export const Navbar = () => {
   const navContainerRef = useRef<HTMLDivElement>(null);
@@ -50,22 +51,20 @@ export const Navbar = () => {
     >
       <div className="absolute top-1/2 w-full -translate-y-1/2 bg-gray-900/70 backdrop-blur-lg">
         <nav className="flex size-full items-center justify-between p-4">
-          {/* Left Side */}
           <div className="flex items-center gap-7">
             <a href="#hero" className="transition hover:opacity-75">
               <img src="/img/logo.png" alt="Logo" className="w-10" />
             </a>
 
-            <a href="https://drive.google.com/file/d/11uh1d8n55y7NHaMPlJKvtaX5-P5vigcM/view?usp=sharing"><Button
+            <a href="https://docs.google.com/document/d/1eDjQHxayU6pU5dpj8LjurnboHz3x1VSZY_AMYXlhC5I/edit?usp=sharing"><Button
               id="product-button"
               rightIcon={TiLocationArrow}
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
             >
               Rule Book
-            </Button></a>
+            </Button>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden items-center space-x-6 md:flex">
             {NAV_ITEMS.map(({ label, href }) => (
               <a key={href} href={href} className="nav-hover-btn">
@@ -74,11 +73,10 @@ export const Navbar = () => {
             ))}
           </div>
 
-          {/* Right Side */}
           <div className="flex items-center gap-4">
             <button
               onClick={toggleAudioIndicator}
-              className="ml-10 flex items-center space-x-1 p-2 transition hover:opacity-75"
+              className="ml-10 flex items-center space-x-2 p-2 transition hover:opacity-75"
               title="Play Audio"
             >
               <audio
@@ -87,21 +85,26 @@ export const Navbar = () => {
                 className="hidden"
                 loop
               />
-              {Array(4)
-                .fill("")
-                .map((_, i) => (
-                  <div
-                    key={i + 1}
-                    className={cn(
-                      "indicator-line",
-                      isIndicatorActive && "active"
-                    )}
-                    style={{ animationDelay: `${(i + 1) * 0.1}s` }}
-                  />
-                ))}
+
+              {/* Tune Icon */}
+              <FaMusic className="size-5 text-white" />
+
+              {/* Animated Indicator Lines (Only show when playing) */}
+              {isIndicatorActive && (
+                <div className="flex space-x-1">
+                  {Array(4)
+                    .fill("")
+                    .map((_, i) => (
+                      <div
+                        key={i + 1}
+                        className="indicator-line active"
+                        style={{ animationDelay: `${(i + 1) * 0.1}s` }}
+                      />
+                    ))}
+                </div>
+              )}
             </button>
 
-            {/* Mobile Menu Button */}
             <button
               className="p-2 transition hover:opacity-75 md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -115,19 +118,18 @@ export const Navbar = () => {
           </div>
         </nav>
 
-        {/* Mobile Navigation Menu */}
         <div
           ref={menuRef}
-          className={`transition-all duration-300 ease-in-out md:hidden ${
-            isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-          } overflow-hidden`}
+          className={`top-13 fixed right-0 h-full w-64 transform p-4 transition-transform duration-300 ease-in-out ${
+            isMobileMenuOpen ? "translate-x-10" : "translate-x-full"
+          } md:hidden`}
         >
-          <nav className="flex flex-col items-center space-y-4 bg-gray-900 p-4">
+          <nav className="flex flex-col items-center space-y-8 bg-gray-900/70 p-4 backdrop-blur-lg">
             {NAV_ITEMS.map(({ label, href }) => (
               <a
                 key={href}
                 href={href}
-                className="nav-hover-btn text-lg text-white"
+                className="nav-hover-btn w-full py-2 text-center text-lg text-white"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {label}
