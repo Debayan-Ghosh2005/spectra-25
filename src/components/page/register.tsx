@@ -23,7 +23,10 @@ interface TeamRegistrationData {
   name2: string;
   college1: string;
   college2: string;
-  email: string;
+  email1: string;
+  email2: string;
+  department1: string;
+  department2: string;
   phone1: string;
   phone2: string;
   transactionId: string;
@@ -37,7 +40,10 @@ const Register: React.FC = () => {
     name2: '',
     college1: '',
     college2: '',
-    email: '',
+    email1: '',
+    email2: '',
+    department1: '',
+    department2: '',
     phone1: '',
     phone2: '',
     transactionId: '',
@@ -64,7 +70,8 @@ const Register: React.FC = () => {
     try {
       const requiredFields: (keyof TeamRegistrationData)[] = [
         'teamName', 'name1', 'name2', 'college1', 'college2',
-        'email', 'phone1', 'phone2'
+        'email1', 'email2', 'department1', 'department2',
+        'phone1', 'phone2'
       ];
 
       if (formData.paymentMethod === 'online') {
@@ -77,7 +84,7 @@ const Register: React.FC = () => {
         throw new Error(`Missing required fields: ${missingFields.join(', ')}`);
       }
 
-      if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+      if (!/^\S+@\S+\.\S+$/.test(formData.email1) || !/^\S+@\S+\.\S+$/.test(formData.email2)) {
         throw new Error('Invalid email format');
       }
 
@@ -92,7 +99,10 @@ const Register: React.FC = () => {
         name2: '',
         college1: '',
         college2: '',
-        email: '',
+        email1: '',
+        email2: '',
+        department1: '',
+        department2: '',
         phone1: '',
         phone2: '',
         transactionId: '',
@@ -116,7 +126,7 @@ const Register: React.FC = () => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 opacity-10 rounded-full filter blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="w-full max-w-4xl bg-gray-900/90 backdrop-blur-md border border-cyan-500/30 shadow-[0_0_15px_rgba(0,255,255,0.3)] rounded-3xl p-8 sm:p-10 lg:p-12 mt-20 transform transition-all hover:shadow-[0_0_25px_rgba(0,255,255,0.5)] animate-fade-in z-10">
+      <div className="w-full max-w-7xl bg-gray-900/90 backdrop-blur-md border border-cyan-500/30 shadow-[0_0_15px_rgba(0,255,255,0.3)] rounded-3xl p-8 sm:p-10 lg:p-12 mt-20 transform transition-all hover:shadow-[0_0_25px_rgba(0,255,255,0.5)] animate-fade-in z-10">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-5xl font-extrabold text-cyan-400 tracking-wider animate-glow">
@@ -180,14 +190,16 @@ const Register: React.FC = () => {
               </div>
             </div>
 
-            {/* Participant 1 Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {/* Participant 1 Row - All fields including phone */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               {[
                 { id: 'name1', label: 'Participant 1 Name', placeholder: 'Enter 1st Participant Name', required: true },
                 { id: 'college1', label: 'Participant 1 College', placeholder: 'Enter 1st Participant College', required: true },
-                { id: 'phone1', label: 'Participant 1 Phone', placeholder: 'Enter Phone No 1', type: 'tel', required: true }
+                { id: 'department1', label: 'Participant 1 Department', placeholder: 'Enter Department', required: true },
+                { id: 'email1', label: 'Participant 1 Email', placeholder: 'Enter Email', type: 'email', required: true },
+                { id: 'phone1', label: 'Participant 1 Phone', placeholder: 'Enter Phone No', type: 'tel', required: true }
               ].map(field => (
-                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${field.id === 'name1' ? '0s' : field.id === 'college1' ? '0.1s' : '0.2s'}` }}>
+                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${['name1', 'college1', 'department1', 'email1', 'phone1'].indexOf(field.id) * 0.1}s` }}>
                   <label htmlFor={field.id} className="block text-sm font-mono text-cyan-300">
                     {field.label} <span className="text-red-500">*</span>
                   </label>
@@ -204,14 +216,16 @@ const Register: React.FC = () => {
               ))}
             </div>
 
-            {/* Participant 2 Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {/* Participant 2 Row - All fields including phone */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               {[
                 { id: 'name2', label: 'Participant 2 Name', placeholder: 'Enter 2nd Participant Name', required: true },
                 { id: 'college2', label: 'Participant 2 College', placeholder: 'Enter 2nd Participant College', required: true },
-                { id: 'phone2', label: 'Participant 2 Phone', placeholder: 'Enter Phone No 2', type: 'tel', required: true }
+                { id: 'department2', label: 'Participant 2 Department', placeholder: 'Enter Department', required: true },
+                { id: 'email2', label: 'Participant 2 Email', placeholder: 'Enter Email', type: 'email', required: true },
+                { id: 'phone2', label: 'Participant 2 Phone', placeholder: 'Enter Phone No', type: 'tel', required: true }
               ].map(field => (
-                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${field.id === 'name2' ? '0s' : field.id === 'college2' ? '0.1s' : '0.2s'}` }}>
+                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${['name2', 'college2', 'department2', 'email2', 'phone2'].indexOf(field.id) * 0.1}s` }}>
                   <label htmlFor={field.id} className="block text-sm font-mono text-cyan-300">
                     {field.label} <span className="text-red-500">*</span>
                   </label>
@@ -221,31 +235,17 @@ const Register: React.FC = () => {
                     value={formData[field.id as keyof TeamRegistrationData]}
                     onChange={handleChange}
                     placeholder={field.placeholder}
-                    className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
+                    className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0-Home15px_rgba(0,255,255,0.4)] placeholder-gray-500"
                     required
                   />
                 </div>
               ))}
             </div>
 
-            {/* Email and Transaction Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-3 animate-fade-in-up">
-                <label htmlFor="email" className="block text-sm font-mono text-cyan-300">
-                  Email <span className="text-red-500">*</span>
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter your Email"
-                  className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
-                  required
-                />
-              </div>
-              {formData.paymentMethod === 'online' && (
-                <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            {/* Transaction ID Row (if online payment) */}
+            {formData.paymentMethod === 'online' && (
+              <div className="grid grid-cols-1 gap-6">
+                <div className="space-y-3 animate-fade-in-up">
                   <label htmlFor="transactionId" className="block text-sm font-mono text-cyan-300">
                     Transaction ID <span className="text-red-500">*</span>
                   </label>
@@ -259,8 +259,8 @@ const Register: React.FC = () => {
                     required
                   />
                 </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
 
           {/* Submit Button */}
@@ -292,7 +292,7 @@ const Register: React.FC = () => {
               <svg className="h-8 w-8 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span className="font-mono">Sucessfully Registered</span>
+              <span className="font-mono">Successfully Registered</span>
             </div>
           )}
           {submitStatus === 'error' && (
