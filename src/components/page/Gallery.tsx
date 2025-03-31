@@ -62,11 +62,11 @@ const Gallery = () => {
   // relative min-h-screen w-screen overflow-x-hidden bg-[#001D35] text-white
   return (
     <div className="relative flex min-h-screen w-screen flex-col items-center justify-center bg-[#001D35] p-10 text-white">
-      <h1 className="mb-8 mt-24 text-center text-4xl font-bold">
+      <h1 className="mb-8 mt-24 text-center text-4xl font-zentry">
         SPECTRA 2024 MOMENTS
       </h1>
       <div className="relative w-full max-w-2xl overflow-hidden">
-        <h2 className="mb-2 text-center text-2xl font-semibold">
+        <h2 className="mb-2 text-center text-2xl font-general">
           {categories[index].title}
         </h2>
         <motion.img

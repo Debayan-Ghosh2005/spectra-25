@@ -102,7 +102,7 @@ const timelineData: TimelineEntry[] = [
     content: (
       <div>
         <p className="text-white dark:text-white">
-          Round consists of Riddle solving using given storyline for each team.
+          Round consists of Riddle solving using given storyline for each team.
         </p>
         <div className="mt-4 grid grid-cols-2 gap-4">
           <img
@@ -221,18 +221,18 @@ const Schedule = () => {
 
   return (
     <div className="relative min-h-screen w-screen overflow-x-hidden bg-[#001D35] text-white">
-      <div className="mt-10 w-full bg-[#001D35] font-sans md:px-10">
+      <div className="mt-10 w-full bg-[#001D35] font-general md:px-10">
         {/* Animated Header Section */}
         <motion.div
           className="mx-auto max-w-7xl px-4 py-20 md:px-8 lg:px-10"
           initial="hidden"
-          animate="visible" // Use animate instead of whileInView for initial load animation
+          animate="visible"
           variants={headerVariants}
         >
-          <h2 className="mb-4 max-w-4xl text-lg text-white md:text-4xl dark:text-white">
+          <h2 className="mb-4 max-w-4xl text-lg md:text-4xl" style={{ fontFamily: "'zentry', sans-serif" }}>
             SPECTRA-2K25 Event Schedule!
           </h2>
-          <p className="max-w-sm text-sm text-white md:text-base">
+          <p className="max-w-sm text-sm md:text-base">
             This timeline showcases the steps for you to complete the event.
           </p>
         </motion.div>
@@ -244,7 +244,7 @@ const Schedule = () => {
               className={`timeline-item flex justify-start pt-10 md:gap-10 md:pt-40`}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }} // Trigger when 30% of the item is in view
+              viewport={{ once: false, amount: 0.3 }}
               variants={itemVariants}
             >
               <div className="sticky top-40 z-40 flex max-w-xs flex-col items-center self-start md:w-full md:flex-row lg:max-w-sm">
@@ -255,13 +255,13 @@ const Schedule = () => {
                     className="h-full w-full rounded-full object-cover"
                   />
                 </div>
-                <h3 className="hidden text-xl font-bold text-white md:block md:pl-20 md:text-5xl dark:text-white">
+                <h3 className="hidden text-xl font-bold md:block md:pl-20 md:text-5xl" style={{ fontFamily: "'zentry', sans-serif" }}>
                   {item.title}
                 </h3>
               </div>
 
               <div className="relative w-full pl-20 pr-4 text-white md:pl-4">
-                <h3 className="mb-4 block text-left text-2xl font-bold text-white md:hidden">
+                <h3 className="mb-4 block text-left text-2xl font-bold md:hidden" style={{ fontFamily: "'zentry', sans-serif" }}>
                   {item.title}
                 </h3>
                 <div className="text-white">{item.content}</div>

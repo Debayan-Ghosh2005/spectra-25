@@ -43,7 +43,7 @@ function App() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-32">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-[#1a2b3c] p-8 rounded-2xl shadow-lg">
-            <h1 className="text-5xl font-bold text-white mb-2 pb-11">
+            <h1 className="text-5xl font-zentry text-white mb-2 pb-11">
               Send Your Queries or<br />Problems
             </h1>
             <form className="space-y-4">
@@ -78,7 +78,7 @@ function App() {
           </div>
 
           <div className="bg-[#1a2b3c] p-8 rounded-2xl shadow-lg">
-            <h1 className="text-5xl font-bold text-white mb-2">
+            <h1 className="text-5xl font-zentry text-white mb-2">
               Need Help? <br /> Contact Us Without Hesitation
             </h1>
             <p className="text-gray-400 text-sm mb-6">
@@ -128,7 +128,7 @@ function App() {
 
         {/* FAQ Section */}
         <div className="mt-20">
-          <h2 className="text-4xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+          <h2 className="text-4xl font-zentry mb-8 text-center">Frequently Asked Questions</h2>
           <div className="max-w-2xl mx-auto">
             {faqs.map((faq, index) => (
               <div key={index} className="mb-4">
@@ -155,7 +155,7 @@ function App() {
 
         {/* Map Section */}
         <div className="mt-20">
-          <h2 className="text-4xl font-bold mb-8 text-center">Locate Us</h2>
+          <h2 className="text-4xl font-zentry mb-8 text-center">Locate Us</h2>
           <div className="h-[400px] overflow-hidden rounded-2xl">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.915324404707!2d88.3451222091869!3d22.619636979372576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f89d65da7b3775%3A0x30915f7e98f1b0d5!2sMCKV%20Institute%20of%20Engineering!5e0!3m2!1sen!2sin!4v1743003836835!5m2!1sen!2sin"

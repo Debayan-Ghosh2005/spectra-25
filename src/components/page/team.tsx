@@ -215,14 +215,14 @@ const Team = () => {
       <style>
         {`
           @font-face {
-            font-family: 'Ghibli';
-            src: url('/fonts/Ghibli.otf') format('opentype');
+            font-family: 'zentry';
+            src: url('/fonts/zentry-regular.woff2') format('woff2');
             font-weight: normal;
             font-style: normal;
           }
           @font-face {
-            font-family: 'Ghibli-Bold';
-            src: url('/fonts/Ghibli-Bold.otf') format('opentype');
+            font-family: 'zentry';
+            src: url('/fonts/zentry-regular.woff2') format('woff.2');
             font-weight: bold;
             font-style: normal;
           }
@@ -251,7 +251,7 @@ const Team = () => {
       >
         <div className="flex flex-col items-center mb-16">
           <motion.h1
-            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold text-center font-zentry"
             style={{
               background: "white",
               WebkitBackgroundClip: "text",
@@ -342,8 +342,7 @@ const Team = () => {
               </div>
               <div className="pt-16 sm:pt-20 pb-6 px-4 sm:px-6 text-center">
                 <h2
-                  className="text-xl sm:text-2xl font-bold text-white mb-1"
-                  style={{ fontFamily: "Ghibli, sans-serif" }}
+                  className="text-xl sm:text-2xl font-bold text-white mb-1 font-general"
                 >
                   {member.name}
                 </h2>
@@ -429,7 +428,9 @@ const Team = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <h3 className="text-lg sm:text-xl text-white/80 mb-6">No team members found in this category</h3>
+            <h3 className="text-lg sm:text-xl text-white/80 mb-6 zentry-heading">
+              No team members found in this category
+            </h3>
             <motion.button
               className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-[#651FFF] to-[#7C4DFF] text-white font-medium"
               whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(101, 31, 255, 0.5)" }}

@@ -13,7 +13,7 @@ interface EventRound {
   icon: JSX.Element;
   time: string;
   description: string;
-  image: string; // If using imported images, change to `image: any;`
+  image: string;
   furtherDetails: string;
 }
 
@@ -31,17 +31,17 @@ const EventPage = () => {
         "Types of Questions comprises of Quiz, Riddles, Aptitude, GK/GS. Screening of top 15 to 20 teams (Yet to be decided)",
       image: tech1,
       furtherDetails:
-        "APTIVERSE is the first screening round that tests participants' quick thinking and knowledge across diverse domains. The 30 questions will be a balanced mix of general knowledge, logical puzzles, quantitative aptitude, and current affairs. Teams must answer within the strict 25-minute time limit. This round emphasizes accuracy under pressure, with the top 15-20 teams advancing based on their scores. No partial marking will be applied, so precision is key. Participants should brush up on their mental math, pattern recognition, and general awareness to excel in this round.",
+        "APTIVERSE is the first screening round that tests participants' quick thinking and knowledge across diverse domains...",
     },
     {
       title: "Round 2: VIDZARD",
       icon: <Puzzle className="h-8 w-8" />,
       time: "75 minutes total (15 min planning + 60 min solving)",
       description:
-        "First 15 minutes: Write solution approach on paper. General problem-solving questions; coding allowed on any platform for the rest 1 hour. Internet access allowed for one-fourth of the total time (approx. 18-19 minutes), mainly for downloading compilers if needed.",
+        "First 15 minutes: Write solution approach on paper. General problem-solving questions; coding allowed on any platform for the rest 1 hour...",
       image: tech2,
       furtherDetails:
-        "VIDZARD challenges teams with complex problem-solving scenarios. The round begins with a 15-minute paper-based planning phase where teams must document their solution approach without any digital tools. This tests structured thinking and planning skills. The subsequent 60 minutes allow coding on any platform to implement solutions. Limited internet access (about 18-19 minutes) is permitted strictly for technical setup and research - not for finding direct solutions. Teams must demonstrate creativity in problem-solving while adhering to ethical guidelines. Any use of AI tools or unfair practices will result in immediate disqualification. This round evaluates both technical skills and integrity under constrained resources.",
+        "VIDZARD challenges teams with complex problem-solving scenarios...",
     },
     {
       title: "Round 3: TRYME-ZE",
@@ -50,7 +50,7 @@ const EventPage = () => {
       description: "6 Teams selected from Round 2. Round consists of Riddle solving using given storyline for each team.",
       image: tech3,
       furtherDetails:
-        "TRYME-ZE is the ultimate test of creativity and lateral thinking for the top 6 qualifying teams. Each team will receive a unique storyline packed with embedded riddles and puzzles. Teams must unravel the narrative, identify hidden clues, and solve interconnected challenges within the 45-minute timeframe. This round emphasizes teamwork, out-of-the-box thinking, and the ability to connect disparate information. Judges will evaluate not just correct answers but also the elegance of solutions and collaborative dynamics. The storyline format makes this round particularly engaging, requiring participants to maintain both logical rigor and imaginative flexibility throughout the challenge.",
+        "TRYME-ZE is the ultimate test of creativity and lateral thinking for the top 6 qualifying teams...",
     },
   ];
 
@@ -77,10 +77,11 @@ const EventPage = () => {
     >
       <div className="relative z-10 mx-auto max-w-7xl space-y-16">
         <motion.h2
-          className="font-orbitron mb-12 pt-24 text-center text-4xl font-bold uppercase text-white sm:text-5xl md:text-6xl"
+          className="mb-12 pt-24 text-center text-4xl font-bold uppercase text-white sm:text-5xl md:text-6xl"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          style={{ fontFamily: "'zentry', sans-serif" }}
         >
           Event Rounds
         </motion.h2>
@@ -119,7 +120,7 @@ const EventPage = () => {
                 {!flippedCards.includes(index) && (
                   <div className="flex h-full w-full flex-col items-center justify-center p-6">
                     <div className="text-white">{round.icon}</div>
-                    <h3 className="font-orbitron mt-4 text-center text-xl font-bold uppercase text-white sm:text-2xl">
+                    <h3 className="mt-4 text-center text-xl font-bold uppercase text-white sm:text-2xl" style={{ fontFamily: "'general', sans-serif" }}>
                       {round.title}
                     </h3>
                   </div>
@@ -127,7 +128,7 @@ const EventPage = () => {
 
                 {flippedCards.includes(index) && (
                   <div className="w-full space-y-4 p-6 text-center">
-                    <h3 className="font-orbitron text-xl font-bold uppercase text-white sm:text-2xl">
+                    <h3 className="text-xl font-bold uppercase text-white sm:text-2xl" style={{ fontFamily: "'general', sans-serif" }}>
                       {round.title}
                     </h3>
                     <div className="flex items-center justify-center gap-4 text-gray-300">
@@ -162,7 +163,7 @@ const EventPage = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <h3 className="font-orbitron text-xl font-bold uppercase text-white sm:text-2xl">
+            <h3 className="text-xl font-bold uppercase text-white sm:text-2xl" style={{ fontFamily: "'zentry', sans-serif" }}>
               {selectedRound.title}
             </h3>
             <p className="font-circular-web mt-2 text-sm text-gray-200 sm:text-base">
