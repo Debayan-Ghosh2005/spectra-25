@@ -5,6 +5,7 @@ import { FaChevronDown, FaTimes } from "react-icons/fa";
 import { NAV_ITEMS } from "@/constants";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
+import { FaMusic } from "react-icons/fa";
 
 export const Navbar = () => {
   const navContainerRef = useRef<HTMLDivElement>(null);
@@ -74,7 +75,7 @@ export const Navbar = () => {
           <div className="flex items-center gap-4">
             <button
               onClick={toggleAudioIndicator}
-              className="ml-10 flex items-center space-x-1 p-2 transition hover:opacity-75"
+              className="ml-10 flex items-center space-x-2 p-2 transition hover:opacity-75"
               title="Play Audio"
             >
               <audio
@@ -83,18 +84,24 @@ export const Navbar = () => {
                 className="hidden"
                 loop
               />
-              {Array(4)
-                .fill("")
-                .map((_, i) => (
-                  <div
-                    key={i + 1}
-                    className={cn(
-                      "indicator-line",
-                      isIndicatorActive && "active"
-                    )}
-                    style={{ animationDelay: `${(i + 1) * 0.1}s` }}
-                  />
-                ))}
+
+              {/* Tune Icon */}
+              <FaMusic className="size-5 text-white" />
+
+              {/* Animated Indicator Lines (Only show when playing) */}
+              {isIndicatorActive && (
+                <div className="flex space-x-1">
+                  {Array(4)
+                    .fill("")
+                    .map((_, i) => (
+                      <div
+                        key={i + 1}
+                        className="indicator-line active"
+                        style={{ animationDelay: `${(i + 1) * 0.1}s` }}
+                      />
+                    ))}
+                </div>
+              )}
             </button>
 
             <button
