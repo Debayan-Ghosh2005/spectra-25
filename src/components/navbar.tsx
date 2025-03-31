@@ -56,13 +56,13 @@ export const Navbar = () => {
               <img src="/img/logo.png" alt="Logo" className="w-10" />
             </a>
 
-            <Button
+            <a href=""><Button
               id="product-button"
               rightIcon={TiLocationArrow}
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
             >
               Rule Book
-            </Button>
+            </Button></a>
           </div>
 
           {/* Desktop Navigation */}

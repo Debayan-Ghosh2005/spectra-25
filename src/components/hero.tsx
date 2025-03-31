@@ -148,9 +148,9 @@ export const Hero = () => {
               Spe<b>c</b>tra
             </h1>
 
-            <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Somnath Paul <br />
-              Unleash the Play Economy
+            <p className="mb-5 max-w-70 font-robert-regular text-blue-100">
+              Welcome to SPECTRA 2K25 <br />
+              Where Creativity Meets Technology, and Ideas Turn into Reality – Spectra!
             </p>
 
             <a href="register">
