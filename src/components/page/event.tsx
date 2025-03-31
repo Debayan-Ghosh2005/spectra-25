@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { JSX } from "react";
 
 // Tech Images
-import tech1 from "/public/img/tech5.png";
+import tech1 from "/public/img/tech1.avif";
 import tech2 from "/public/img/tech2.avif";
-import tech3 from "/public/img/tech4.png";
+import tech3 from "/public/img/tech3.avif";
 
 interface EventRound {
   title: string;
@@ -81,7 +81,6 @@ const EventPage = () => {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          style={{ textShadow: "0 0 20px rgba(255, 255, 255, 0.8)" }}
         >
           Event Rounds
         </motion.h2>
