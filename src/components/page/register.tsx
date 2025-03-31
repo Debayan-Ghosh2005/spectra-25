@@ -21,8 +21,8 @@ interface TeamRegistrationData {
   teamName: string;
   name1: string;
   name2: string;
-  college?: string;
-  department: string;
+  college1: string;
+  college2: string;
   email: string;
   phone1: string;
   phone2: string;
@@ -35,8 +35,8 @@ const Register: React.FC = () => {
     teamName: '',
     name1: '',
     name2: '',
-    college: '',
-    department: '',
+    college1: '',
+    college2: '',
     email: '',
     phone1: '',
     phone2: '',
@@ -63,7 +63,7 @@ const Register: React.FC = () => {
 
     try {
       const requiredFields: (keyof TeamRegistrationData)[] = [
-        'teamName', 'name1', 'name2', 'department',
+        'teamName', 'name1', 'name2', 'college1', 'college2',
         'email', 'phone1', 'phone2'
       ];
 
@@ -90,8 +90,8 @@ const Register: React.FC = () => {
         teamName: '',
         name1: '',
         name2: '',
-        college: '',
-        department: '',
+        college1: '',
+        college2: '',
         email: '',
         phone1: '',
         phone2: '',
@@ -148,98 +148,118 @@ const Register: React.FC = () => {
           {formData.paymentMethod === 'online' && (
             <div className="bg-gray-800/80 p-6 rounded-2xl text-center space-y-5 border border-purple-500/30 shadow-[0_0_15px_rgba(147,51,234,0.3)] animate-slide-up">
               <p className="text-purple-300 font-mono text-lg">
-                Quantum Payment Interface
+                QR code
               </p>
               <div className="bg-gray-900 p-4 rounded-xl shadow-inner transform hover:scale-105 transition-all duration-300 border border-cyan-500/20">
                 <img
-                  src="https://via.placeholder.com/150x150.png?text=Quantum+QR"
+                  src="/img/pay.jpg"
                   alt="Payment QR Code"
                   className="w-52 h-52 rounded-lg shadow-[0_0_10px_rgba(0,255,255,0.5)]"
                 />
               </div>
-              <p className="text-gray-400 text-sm font-mono animate-fade-in">
-                Input Transaction Hash below
-              </p>
             </div>
           )}
 
           {/* Form Fields */}
           <div className="space-y-8">
-            {/* Row 1 */}
+            {/* Team Name Row */}
+            <div className="grid grid-cols-1 gap-6">
+              <div className="space-y-3 animate-fade-in-up">
+                <label htmlFor="teamName" className="block text-sm font-mono text-cyan-300">
+                  Team Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="teamName"
+                  type="text"
+                  value={formData.teamName}
+                  onChange={handleChange}
+                  placeholder="Enter your Team Name"
+                  className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Participant 1 Row */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
-                { id: 'teamName', label: 'Team Name', placeholder: 'Enter your Team Name', required: true },
-                { id: 'name1', label: 'Name 1', placeholder: 'Enter 1st Participant Name', required: true },
-                { id: 'name2', label: 'Name 2', placeholder: 'Enter 2nd Participant Name', required: true }
+                { id: 'name1', label: 'Participant 1 Name', placeholder: 'Enter 1st Participant Name', required: true },
+                { id: 'college1', label: 'Participant 1 College', placeholder: 'Enter 1st Participant College', required: true },
+                { id: 'phone1', label: 'Participant 1 Phone', placeholder: 'Enter Phone No 1', type: 'tel', required: true }
               ].map(field => (
-                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${field.id === 'teamName' ? '0s' : field.id === 'name1' ? '0.1s' : '0.2s'}` }}>
+                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${field.id === 'name1' ? '0s' : field.id === 'college1' ? '0.1s' : '0.2s'}` }}>
                   <label htmlFor={field.id} className="block text-sm font-mono text-cyan-300">
-                    {field.label} {field.required && <span className="text-red-500">*</span>}
+                    {field.label} <span className="text-red-500">*</span>
                   </label>
                   <input
                     id={field.id}
+                    type={field.type || 'text'}
+                    value={formData[field.id as keyof TeamRegistrationData]}
+                    onChange={handleChange}
+                    placeholder={field.placeholder}
+                    className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
+                    required
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Participant 2 Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              {[
+                { id: 'name2', label: 'Participant 2 Name', placeholder: 'Enter 2nd Participant Name', required: true },
+                { id: 'college2', label: 'Participant 2 College', placeholder: 'Enter 2nd Participant College', required: true },
+                { id: 'phone2', label: 'Participant 2 Phone', placeholder: 'Enter Phone No 2', type: 'tel', required: true }
+              ].map(field => (
+                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${field.id === 'name2' ? '0s' : field.id === 'college2' ? '0.1s' : '0.2s'}` }}>
+                  <label htmlFor={field.id} className="block text-sm font-mono text-cyan-300">
+                    {field.label} <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id={field.id}
+                    type={field.type || 'text'}
+                    value={formData[field.id as keyof TeamRegistrationData]}
+                    onChange={handleChange}
+                    placeholder={field.placeholder}
+                    className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
+                    required
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Email and Transaction Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-3 animate-fade-in-up">
+                <label htmlFor="email" className="block text-sm font-mono text-cyan-300">
+                  Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Enter your Email"
+                  className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
+                  required
+                />
+              </div>
+              {formData.paymentMethod === 'online' && (
+                <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                  <label htmlFor="transactionId" className="block text-sm font-mono text-cyan-300">
+                    Transaction ID <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="transactionId"
                     type="text"
-                    value={formData[field.id as keyof TeamRegistrationData]}
+                    value={formData.transactionId}
                     onChange={handleChange}
-                    placeholder={field.placeholder}
+                    placeholder="Enter transaction hash"
                     className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
-                    required={field.required}
+                    required
                   />
                 </div>
-              ))}
-            </div>
-
-            {/* Row 2 */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {[
-                { id: 'college', label: 'College Name', placeholder: 'Enter College Name', required: false },
-                { id: 'department', label: 'Department', placeholder: 'Enter Department', required: true },
-                { id: 'email', label: 'Email', placeholder: 'Enter your Email', type: 'email', required: true }
-              ].map(field => (
-                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${field.id === 'college' ? '0s' : field.id === 'department' ? '0.1s' : '0.2s'}` }}>
-                  <label htmlFor={field.id} className="block text-sm font-mono text-cyan-300">
-                    {field.label} {field.required && <span className="text-red-500">*</span>}
-                  </label>
-                  <input
-                    id={field.id}
-                    type={field.type || 'text'}
-                    value={formData[field.id as keyof TeamRegistrationData]}
-                    onChange={handleChange}
-                    placeholder={field.placeholder}
-                    className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
-                    required={field.required}
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* Row 3 */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {[
-                { id: 'phone1', label: 'Phone No', placeholder: 'Enter Phone No 1', type: 'tel', required: true },
-                { id: 'phone2', label: 'Phone No', placeholder: 'Enter Phone No 2', type: 'tel', required: true },
-                ...(formData.paymentMethod === 'online' ? [{
-                  id: 'transactionId',
-                  label: 'Transaction Hash',
-                  placeholder: 'Enter transaction hash',
-                  required: true
-                }] : [])
-              ].map(field => (
-                <div key={field.id} className="space-y-3 animate-fade-in-up" style={{ animationDelay: `${field.id === 'phone1' ? '0s' : field.id === 'phone2' ? '0.1s' : '0.2s'}` }}>
-                  <label htmlFor={field.id} className="block text-sm font-mono text-cyan-300">
-                    {field.label} {field.required && <span className="text-red-500">*</span>}
-                  </label>
-                  <input
-                    id={field.id}
-                    type={field.type || 'text'}
-                    value={formData[field.id as keyof TeamRegistrationData]}
-                    onChange={handleChange}
-                    placeholder={field.placeholder}
-                    className="w-full p-4 bg-gray-800 border-2 border-cyan-500/50 rounded-xl text-cyan-200 focus:ring-4 focus:ring-cyan-400 focus:border-cyan-400 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] placeholder-gray-500"
-                    required={field.required}
-                  />
-                </div>
-              ))}
+              )}
             </div>
           </div>
 
@@ -262,7 +282,7 @@ const Register: React.FC = () => {
                 Transmitting...
               </span>
             ) : (
-              'Engage Registry'
+              'Register'
             )}
           </button>
 
@@ -272,7 +292,7 @@ const Register: React.FC = () => {
               <svg className="h-8 w-8 mr-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span className="font-mono">Registry Confirmed: Access Granted!</span>
+              <span className="font-mono">Sucessfully Registered</span>
             </div>
           )}
           {submitStatus === 'error' && (
