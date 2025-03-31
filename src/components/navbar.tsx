@@ -53,16 +53,18 @@ export const Navbar = () => {
         <nav className="flex size-full items-center justify-between p-4">
           <div className="flex items-center gap-7">
             <a href="#hero" className="transition hover:opacity-75">
-              <img src="/img/logo.png" alt="Logo" className="w-10" />
+              <img src="/spectra-logo.png" alt="Logo" className="w-10" />
             </a>
 
-            <a href="https://docs.google.com/document/d/1eDjQHxayU6pU5dpj8LjurnboHz3x1VSZY_AMYXlhC5I/edit?usp=sharing"><Button
-              id="product-button"
-              rightIcon={TiLocationArrow}
-              containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            >
-              Rule Book
-            </Button></a>
+            <a href="https://docs.google.com/document/d/1eDjQHxayU6pU5dpj8LjurnboHz3x1VSZY_AMYXlhC5I/edit?usp=sharing">
+              <Button
+                id="product-button"
+                rightIcon={TiLocationArrow}
+                containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
+              >
+                Rule Book
+              </Button>
+            </a>
           </div>
 
           <div className="hidden items-center space-x-6 md:flex">
