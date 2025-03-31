@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { JSX } from "react";
 
 // Tech Images
-import tech1 from "/public/img/tech1.avif";
+import tech1 from "/public/img/tech5.png";
 import tech2 from "/public/img/tech2.avif";
-import tech3 from "/public/img/tech3.avif";
+import tech3 from "/public/img/tech4.png";
 
 interface EventRound {
   title: string;
