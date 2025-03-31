@@ -149,8 +149,9 @@ export const Hero = () => {
             </h1>
 
             <p className="mb-5 max-w-70 font-robert-regular text-blue-100">
-              Welcome to SPECTRA 2K25 <br />
-              Where Creativity Meets Technology, and Ideas Turn into Reality – Spectra!
+            Where Creativity Meets Technology, and Ideas Turn into Reality – Spectra! <br />
+
+            A yearly departmental Event of CSE-AIML Organized by MCKV
             </p>
 
             <a href="register">
