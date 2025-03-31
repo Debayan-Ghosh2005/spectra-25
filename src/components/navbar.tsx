@@ -62,7 +62,7 @@ export const Navbar = () => {
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
             >
               Rule Book
-            </Button>
+            </Button></a>
           </div>
 
           <div className="hidden items-center space-x-6 md:flex">
