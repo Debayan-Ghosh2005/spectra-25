@@ -117,7 +117,7 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
-type RoleFilter = "All Roles" | "Developer" | "Designer" | "Management";
+type RoleFilter = "Developer" | "Designer" | "Management";
 
 const cardVariants = {
   offscreen: {
@@ -183,12 +183,11 @@ const roleColors: Record<RoleFilter, string> = {
   Developer: "#651FFF",
   Designer: "#00B8D4",
   Management: "#00C853",
-  "All Roles": "#FFFFFF",
 };
 
 const Team = () => {
   const [expandedCardId, setExpandedCardId] = useState<number | null>(null);
-  const [activeFilter, setActiveFilter] = useState<RoleFilter>("All Roles");
+  const [activeFilter, setActiveFilter] = useState<RoleFilter>("Developer");
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -202,15 +201,14 @@ const Team = () => {
     if (role.includes("Developer")) return "Developer";
     if (role.includes("Designer")) return "Designer";
     if (role === "Project Manager" || role === "CTO") return "Management";
-    return "All Roles";
+    return "Developer"; // Default to Developer if no match
   };
 
   const filteredMembers = teamMembers.filter(
-    (member) =>
-      activeFilter === "All Roles" || categorizeRole(member.role) === activeFilter
+    (member) => categorizeRole(member.role) === activeFilter
   );
 
-  const roleFilters: RoleFilter[] = ["All Roles", "Developer", "Designer", "Management"];
+  const roleFilters: RoleFilter[] = ["Developer", "Designer", "Management"];
 
   return (
     <div className="relative min-h-screen w-screen overflow-x-hidden bg-[#001D35] pb-24">
@@ -232,7 +230,7 @@ const Team = () => {
             background: #001D35;
           }
           .card-glass {
-            background:rgb(2, 37, 67);
+            background: rgb(2, 37, 67);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
           }
@@ -243,8 +241,6 @@ const Team = () => {
         `}
       </style>
 
-      {/* Background elements */}
-      
       <Navbar />
 
       <motion.div
@@ -438,9 +434,9 @@ const Team = () => {
               className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-[#651FFF] to-[#7C4DFF] text-white font-medium"
               whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(101, 31, 255, 0.5)" }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => setActiveFilter("All Roles")}
+              onClick={() => setActiveFilter("Developer")}
             >
-              Show All Team Members
+              Show Developers
             </motion.button>
           </motion.div>
         )}
