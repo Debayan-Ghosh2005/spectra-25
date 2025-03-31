@@ -56,7 +56,7 @@ export const Navbar = () => {
               <img src="/img/logo.png" alt="Logo" className="w-10" />
             </a>
 
-            <a href="https://docs.google.com/document/d/1eDjQHxayU6pU5dpj8LjurnboHz3x1VSZY_AMYXlhC5I/edit?usp=sharing"><Button
+            <a href="https://drive.google.com/file/d/11uh1d8n55y7NHaMPlJKvtaX5-P5vigcM/view?usp=sharing"><Button
               id="product-button"
               rightIcon={TiLocationArrow}
               containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
