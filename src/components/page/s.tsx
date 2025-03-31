@@ -1,47 +1,9 @@
 import { useState } from "react";
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { ChevronDown } from "lucide-react";
-import { FaEnvelope, FaInstagram, FaPhone, FaWhatsapp } from "react-icons/fa";
-
-// Firebase Configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCYfOtBqd4kKuQgmotYuRiHNtFQSnx2iz0",
-  authDomain: "spectra25-fb7cf.firebaseapp.com",
-  projectId: "spectra25-fb7cf",
-  storageBucket: "spectra25-fb7cf.appspot.com",
-  messagingSenderId: "189531230803",
-  appId: "1:189531230803:web:81978d30b5001ec0586ca6",
-  measurementId: "G-41XLWDDW7T"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+import { FaWhatsapp, FaPhone, FaInstagram, FaEnvelope } from "react-icons/fa";
 
 function App() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: ""
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await addDoc(collection(db, "messages"), formData);
-      alert("Message sent successfully!");
-      setFormData({ fullName: "", email: "", phone: "", subject: "", message: "" });
-    } catch (error) {
-      console.error("Error sending message: ", error);
-    }
-  };
 
   const faqs = [
     {
@@ -49,12 +11,15 @@ function App() {
       answer: "You can register through the official Spectra 2025 website",
     },
     {
-      question: "Can I participate in Spectra 2025 across different departments and years?",
-      answer: "Yes, participation across departments and years is allowed. Cross-college participation is also permitted.",
+      question:
+        "Can I participate in Spectra 2025 across different departments and years?",
+      answer:
+        "Yes, participation across departments and years is allowed. Cross-college participation is also permitted.",
     },
     {
       question: "What is the registration fee for Spectra 2025?",
-      answer: "₹50 per team for MCKVIE students, ₹70 per team for outside students, and ₹70 per team for cross-college teams.",
+      answer:
+        "₹50 per team for MCKVIE students, ₹70 per team for outside students, and ₹70 per team for cross-college teams.",
     },
     {
       question: "What is the last day to register?",
@@ -87,7 +52,6 @@ function App() {
   return (
     <div className="relative min-h-screen bg-[#001D35] text-white">
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-32">
-        {/* Contact Form and Contact Info Grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <div className="rounded-2xl bg-[#1a2b3c] p-8 shadow-lg">
             <h1 className="mb-2 pb-11 text-5xl font-bold text-white">
@@ -95,26 +59,24 @@ function App() {
               <br />
               Problems
             </h1>
-            <form className="space-y-4" onSubmit={handleSubmit}>
+            <form className="space-y-4">
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-sm text-gray-300">FULL NAME *</label>
+                  <label className="mb-1 block text-sm text-gray-300">
+                    FULL NAME *
+                  </label>
                   <input
                     type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
                     placeholder="Richard Hammond"
                     className="w-full rounded-lg bg-[#2a3b4c] p-3 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm text-gray-300">EMAIL ADDRESS *</label>
+                  <label className="mb-1 block text-sm text-gray-300">
+                    EMAIL ADDRESS *
+                  </label>
                   <input
                     type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     placeholder="support@gmail.com"
                     className="w-full rounded-lg bg-[#2a3b4c] p-3 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                   />
@@ -122,34 +84,31 @@ function App() {
               </div>
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-sm text-gray-300">PHONE NUMBER *</label>
+                  <label className="mb-1 block text-sm text-gray-300">
+                    PHONE NUMBER *
+                  </label>
                   <input
                     type="text"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
                     placeholder="+91 9999999999"
                     className="w-full rounded-lg bg-[#2a3b4c] p-3 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-sm text-gray-300">SUBJECT *</label>
+                  <label className="mb-1 block text-sm text-gray-300">
+                    SUBJECT *
+                  </label>
                   <input
                     type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
                     placeholder="I would like to discuss"
                     className="w-full rounded-lg bg-[#2a3b4c] p-3 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                   />
                 </div>
               </div>
               <div>
-                <label className="mb-1 block text-sm text-gray-300">MESSAGE *</label>
+                <label className="mb-1 block text-sm text-gray-300">
+                  MESSAGE *
+                </label>
                 <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
                   placeholder="Write message"
                   className="h-24 w-full rounded-lg bg-[#2a3b4c] p-3 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                 ></textarea>
@@ -176,7 +135,9 @@ function App() {
                 key={index}
                 className="mt-4 flex items-center justify-between rounded-lg bg-[#253746] p-4 shadow-md transition duration-300 hover:shadow-lg"
               >
-                <span className="text-xl font-semibold text-white">{contact.name}</span>
+                <span className="text-xl font-semibold text-white">
+                  {contact.name}
+                </span>
                 <div className="flex space-x-6">
                   <a
                     href={`https://wa.me/${contact.whatsapp}`}
@@ -212,7 +173,7 @@ function App() {
               </div>
               <div className="flex flex-col items-center">
                 <a
-                  href="https://www.instagram.com/spectra_2k25》/"
+                  href="https://www.instagram.com/spectra_2k25_/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transform text-pink-400 transition hover:scale-110 hover:text-pink-500"
@@ -276,5 +237,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
