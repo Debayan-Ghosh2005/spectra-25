@@ -31,6 +31,8 @@ interface TeamRegistrationData {
   phone2: string;
   transactionId: string;
   paymentMethod: 'online' | 'offline';
+  paid:string;
+  attendence:string;
 }
 
 const Register: React.FC = () => {
@@ -47,7 +49,9 @@ const Register: React.FC = () => {
     phone1: '',
     phone2: '',
     transactionId: '',
-    paymentMethod: 'offline'
+    paymentMethod: 'offline',
+    paid:'No',
+    attendence:'No'
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -106,7 +110,9 @@ const Register: React.FC = () => {
         phone1: '',
         phone2: '',
         transactionId: '',
-        paymentMethod: 'offline'
+        paymentMethod: 'offline',
+        paid:'No',
+        attendence:'No'
       });
       
       setSubmitStatus('success');
