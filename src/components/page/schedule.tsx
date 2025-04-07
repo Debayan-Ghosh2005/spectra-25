@@ -150,12 +150,7 @@ const timelineData: TimelineEntry[] = [
         </p>
         <div className="mt-4 grid grid-cols-2 gap-4">
           <img
-            src="/img/art3.webp"
-            alt="startup template"
-            className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-          />
-          <img
-            src="/img/art3.webp"
+            src="/img/certificate.jpg"
             alt="startup template"
             className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
           />
@@ -229,7 +224,10 @@ const Schedule = () => {
           animate="visible"
           variants={headerVariants}
         >
-          <h2 className="mb-4 max-w-4xl text-lg md:text-4xl" style={{ fontFamily: "'zentry', sans-serif" }}>
+          <h2
+            className="mb-4 max-w-4xl text-lg md:text-4xl"
+            style={{ fontFamily: "'zentry', sans-serif" }}
+          >
             SPECTRA-2K25 Event Schedule!
           </h2>
           <p className="max-w-sm text-sm md:text-base">
@@ -255,13 +253,19 @@ const Schedule = () => {
                     className="h-full w-full rounded-full object-cover"
                   />
                 </div>
-                <h3 className="hidden text-xl font-bold md:block md:pl-20 md:text-5xl" style={{ fontFamily: "'zentry', sans-serif" }}>
+                <h3
+                  className="hidden text-xl font-bold md:block md:pl-20 md:text-5xl"
+                  style={{ fontFamily: "'zentry', sans-serif" }}
+                >
                   {item.title}
                 </h3>
               </div>
 
               <div className="relative w-full pl-20 pr-4 text-white md:pl-4">
-                <h3 className="mb-4 block text-left text-2xl font-bold md:hidden" style={{ fontFamily: "'zentry', sans-serif" }}>
+                <h3
+                  className="mb-4 block text-left text-2xl font-bold md:hidden"
+                  style={{ fontFamily: "'zentry', sans-serif" }}
+                >
                   {item.title}
                 </h3>
                 <div className="text-white">{item.content}</div>
