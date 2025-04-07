@@ -120,11 +120,10 @@ export const Features = (): JSX.Element => {
               }}
             >
               <BentoCard
-                title={<span className="text-white">Round 1</span>}
+                title={<span className="text-white">Round 1 - SHINOXAM</span>}
                 description={
                   <span className="text-white">
-                    An anime and gaming-inspired NFT collection - the IP primed
-                    for expansion.
+                    A quiz-style challenge to test logical reasoning.
                   </span>
                 }
                 src=""
@@ -142,11 +141,14 @@ export const Features = (): JSX.Element => {
               }}
             >
               <BentoCard
-                title={<span className="text-white">Round 2</span>}
+                title={
+                  <span className="text-white">
+                    Round 2 - SEVEN DEADLY SINS
+                  </span>
+                }
                 description={
                   <span className="text-white">
-                    An anime and gaming-inspired NFT collection - the IP primed
-                    for expansion.
+                    A hands-on programming challenge.
                   </span>
                 }
                 src=""
@@ -163,11 +165,10 @@ export const Features = (): JSX.Element => {
               }}
             >
               <BentoCard
-                title={<span className="text-white">Round 3</span>}
+                title={<span className="text-white">Round 3 - ALCHEMIST</span>}
                 description={
                   <span className="text-white">
-                    An anime and gaming-inspired NFT collection - the IP primed
-                    for expansion.
+                    A fun and engaging problem-solving adventure.
                   </span>
                 }
                 src=""
