@@ -3,48 +3,53 @@ import { useState } from "react";
 
 const categories = [
   {
-    title: "Round 1 Highlights",
-    main: "/img/round1.jpg",
+    title: "Innauguration & Checkin",
+    main: "/img/registration05.JPG",
     related: [
-      "/img/round1.jpg",
-      "/img/round1.jpg",
-      "/img/round1.jpg",
-      "/img/round1.jpg",
-      "/img/round1.jpg",
-      "/img/round1.jpg",
+      "/img/registration03.JPG",
+      "/img/registration04.JPG",
+      "/img/registration06.JPG",
+      "/img/registration01.JPG",
+    ],
+  },
+  {
+    title: "Round 1 Highlights",
+    main: "/img/event01.JPG",
+    related: [
+      "/img/event05.JPG",
+      "/img/event02.JPG",
+      "/img/event03.JPG",
+      "/img/event04.JPG",
     ],
   },
   {
     title: "Round 2 Highlights",
-    main: "/img/round2.jpg",
+    main: "/img/event11.JPG",
     related: [
-      "/img/round2.jpg",
-      "/img/round2.jpg",
-      "/img/round2.jpg",
-      "/img/round2.jpg",
-      "/img/round2.jpg",
-      "/img/round2.jpg",
+      "/img/event06.JPG",
+      "/img/event07.JPG",
+      "/img/event08.JPG",
+      "/img/event09.JPG",
     ],
   },
   {
     title: "Round 3 Highlights",
-    main: "/img/round2.jpg",
+    main: "/img/event12.JPG",
     related: [
-      "/img/round2.jpg",
-      "/img/round2.jpg",
-      "/img/round2.jpg",
-      "/img/round2.jpg",
-      "/img/round2.jpg",
-      "/img/round2.jpg",
+      "/img/event13.JPG",
+      "/img/event14.JPG",
+      "/img/event15.JPG",
+      "/img/event16.JPG",
     ],
   },
   {
     title: "Prize Distribution",
-    main: "/images/spectra4.jpg",
+    main: "/img/event17.JPG",
     related: [
-      "/images/spectra4-1.jpg",
-      "/images/spectra4-2.jpg",
-      "/images/spectra4-3.jpg",
+      "/img/event21.JPG",
+      "/img/event18.JPG",
+      "/img/event19.JPG",
+      "/img/event20.JPG",
     ],
   },
 ];
@@ -62,11 +67,11 @@ const Gallery = () => {
   // relative min-h-screen w-screen overflow-x-hidden bg-[#001D35] text-white
   return (
     <div className="relative flex min-h-screen w-screen flex-col items-center justify-center bg-[#001D35] p-10 text-white">
-      <h1 className="mb-8 mt-24 text-center text-4xl font-zentry">
+      <h1 className="mb-8 mt-24 text-center font-zentry text-4xl">
         SPECTRA 2024 MOMENTS
       </h1>
       <div className="relative w-full max-w-2xl overflow-hidden">
-        <h2 className="mb-2 text-center text-2xl font-general">
+        <h2 className="mb-2 text-center font-general text-2xl">
           {categories[index].title}
         </h2>
         <motion.img

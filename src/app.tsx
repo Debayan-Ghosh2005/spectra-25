@@ -11,7 +11,7 @@ import Schedule from "./components/page/schedule";
 import Event from "./components/page/event";
 import About from "./components/page/about";
 import Contact from "./components/page/contact";
-import Team from "./components/page/team";
+// import Team from "./components/page/team";
 import Register from "./components/page/register";
 import Gallery from "./components/page/Gallery";
 
@@ -27,7 +27,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/team" element={<Team />} />
+          {/* <Route path="/team" element={<Team />} /> */}
           <Route path="/register" element={<Register />} />
         </Routes>
 

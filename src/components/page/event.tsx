@@ -24,33 +24,34 @@ const EventPage = () => {
 
   const eventRounds: EventRound[] = [
     {
-      title: "Round 1: APTIVERSE",
+      title: " SHINOXAM",
       icon: <Brain className="h-8 w-8" />,
       time: "25 minutes [30 questions]",
       description:
         "Types of Questions comprises of Quiz, Riddles, Aptitude, GK/GS. Screening of top 15 to 20 teams (Yet to be decided)",
       image: tech1,
       furtherDetails:
-        "APTIVERSE is the first screening round that tests participants' quick thinking and knowledge across diverse domains...",
+        "SHINOXAM is the first screening round that tests participants' quick thinking and knowledge across diverse domains...",
     },
     {
-      title: "Round 2: VIDZARD",
+      title: " SEVEN DEADLY SINS",
       icon: <Puzzle className="h-8 w-8" />,
       time: "75 minutes total (15 min planning + 60 min solving)",
       description:
         "First 15 minutes: Write solution approach on paper. General problem-solving questions; coding allowed on any platform for the rest 1 hour...",
       image: tech2,
       furtherDetails:
-        "VIDZARD challenges teams with complex problem-solving scenarios...",
+        "SEVEN DEADLY SINS challenges teams with complex problem-solving scenarios...",
     },
     {
-      title: "Round 3: TRYME-ZE",
+      title: " ALCHEMIST",
       icon: <Award className="h-8 w-8" />,
       time: "45 minutes",
-      description: "6 Teams selected from Round 2. Round consists of Riddle solving using given storyline for each team.",
+      description:
+        "6 Teams selected from Round 2. Round consists of Riddle solving using given storyline for each team.",
       image: tech3,
       furtherDetails:
-        "TRYME-ZE is the ultimate test of creativity and lateral thinking for the top 6 qualifying teams...",
+        "ALCHEMIST is the ultimate test of creativity and lateral thinking for the top 6 qualifying teams...",
     },
   ];
 
@@ -120,7 +121,10 @@ const EventPage = () => {
                 {!flippedCards.includes(index) && (
                   <div className="flex h-full w-full flex-col items-center justify-center p-6">
                     <div className="text-white">{round.icon}</div>
-                    <h3 className="mt-4 text-center text-xl font-bold uppercase text-white sm:text-2xl" style={{ fontFamily: "'general', sans-serif" }}>
+                    <h3
+                      className="mt-4 text-center text-xl font-bold uppercase text-white sm:text-2xl"
+                      style={{ fontFamily: "'general', sans-serif" }}
+                    >
                       {round.title}
                     </h3>
                   </div>
@@ -128,7 +132,10 @@ const EventPage = () => {
 
                 {flippedCards.includes(index) && (
                   <div className="w-full space-y-4 p-6 text-center">
-                    <h3 className="text-xl font-bold uppercase text-white sm:text-2xl" style={{ fontFamily: "'general', sans-serif" }}>
+                    <h3
+                      className="text-xl font-bold uppercase text-white sm:text-2xl"
+                      style={{ fontFamily: "'general', sans-serif" }}
+                    >
                       {round.title}
                     </h3>
                     <div className="flex items-center justify-center gap-4 text-gray-300">
@@ -163,10 +170,13 @@ const EventPage = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
           >
-            <h3 className="text-xl font-bold uppercase text-white sm:text-2xl" style={{ fontFamily: "'zentry', sans-serif" }}>
+            <h3
+              className="text-xl font-bold uppercase text-white sm:text-2xl"
+              style={{ fontFamily: "'zentry', sans-serif" }}
+            >
               {selectedRound.title}
             </h3>
-            <p className="font-circular-web mt-2 text-sm text-gray-200 sm:text-base">
+            <p className="mt-2 font-circular-web text-sm text-gray-200 sm:text-base">
               {selectedRound.furtherDetails}
             </p>
             <motion.button
