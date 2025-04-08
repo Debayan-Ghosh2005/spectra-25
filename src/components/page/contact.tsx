@@ -11,16 +11,20 @@ function App() {
       answer: "You can register through the official Spectra 2025 website",
     },
     {
-      question: "Can I participate in Spectra 2025 across different departments and years?",
+      question: "Can I participate in Spectra'25 across different departments and years?",
       answer: "Yes, participation across departments and years is allowed. Cross-college participation is also permitted."
     },
     {
+      question: "Can I participate across differnet college?",
+      answer: "Yes, participation across  different college is  permitted but not with MCKV IE students."
+    },
+    {
       question: "What is the registration fee for Spectra 2025?",
-      answer: "₹50 per team for MCKVIE students, ₹70 per team for outside students, and ₹70 per team for cross-college teams.",
+      answer: "₹60 per team for MCKVIE students, ₹100 per team for outside students, and ₹70 per team for cross-college teams.",
     },
     {
       question: "What is the last day to register?",
-      answer: "The last date for registration is 7th of April",
+      answer: "The last date for registration is 21th of April",
     },
     {
       question: "What is the prize pool?",
